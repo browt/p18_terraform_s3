@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 sudo yum install -y dnf-utils http://rpms.remirepo.net/enterprise/remi-release-8.rpm
-sudo yum install -y mysql wget vim telnet htop git python3 net-tools 
+sudo yum install -y mysql wget vim telnet htop git python3 net-tools zip
 sudo systemctl start chronyd
 sudo systemctl enable chronyd
 sudo yum module reset php -y
@@ -33,7 +33,7 @@ source ~/.bash_profile
 sudo yum install -y mod_ssl
 
 sudo openssl req -newkey rsa:2048 -nodes -keyout /etc/pki/tls/private/ACS.key -x509 -days 365 -out /etc/pki/tls/certs/ACS.crt \
--subj "/C=UK/ST=London/L=London/O=darey.io/OU=devops/CN=$(curl -s http://169.254.169.254/latest/meta-data/local-hostname)"
+-subj "/C=UK/ST=London/L=London/O=Browt/OU=devops/CN=$(curl -s http://169.254.169.254/latest/meta-data/local-hostname)"
 
 
 sudo sed -i 's/localhost.crt/ACS.crt/g'  /etc/httpd/conf.d/ssl.conf
