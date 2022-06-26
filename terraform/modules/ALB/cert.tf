@@ -1,14 +1,14 @@
 # The entire section create a certiface, public zone, and validate the certificate using DNS method
 
-# Create the certificate using a wildcard for all the domains created in david.toolingabby.com
+# Create the certificate using a wildcard for all the domains created in ccchf.ml
 resource "aws_acm_certificate" "project_19_cert" {
-  domain_name       = "*.david.toolingabby.com"
+  domain_name       = "*.ccchf.ml"
   validation_method = "DNS"
 }
 
 # calling the hosted zone
 data "aws_route53_zone" "project_19_zone" {
-  name         = "david.toolingabby.com"
+  name         = "ccchf.ml"
   private_zone = false
 }
 
@@ -39,7 +39,7 @@ resource "aws_acm_certificate_validation" "project_19_validation" {
 # create records for tooling
 resource "aws_route53_record" "tooling" {
   zone_id = data.aws_route53_zone.project_19_zone.zone_id
-  name    = "tooling.david.toolingabby.com"
+  name    = "tooling.ccchf.ml"
   type    = "A"
 
   alias {
@@ -53,7 +53,7 @@ resource "aws_route53_record" "tooling" {
 # create records for wordpress
 resource "aws_route53_record" "wordpress" {
   zone_id = data.aws_route53_zone.project_19_zone.zone_id
-  name    = "wordpress.david.toolingabby.com"
+  name    = "wordpress.ccchf.ml"
   type    = "A"
 
   alias {
